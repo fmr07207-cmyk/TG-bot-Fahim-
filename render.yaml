@@ -1,0 +1,21 @@
+services:
+  - type: worker
+    name: nexorax-panel
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        value: "6882165252"
+      - key: EARN_PER_EVENT
+        value: "0.10"
+      - key: MIN_WITHDRAW
+        value: "10"
+      - key: DB_PATH
+        value: "/var/data/nexora.db"
+    disk:
+      name: nexora-data
+      mountPath: /var/data
+      sizeGB: 1
